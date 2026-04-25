@@ -12,8 +12,8 @@ int main(){
     PacMan pacman;
     pacman.shape.setRadius(50);
     pacman.shape.setFillColor(sf::Color::Yellow);
-    pacman.x=400;
-    pacman.y=300;
+    pacman.x=300;
+    pacman.y=400;
     pacman.speed=0.1;
     pacman.shape.setPosition(pacman.x , pacman.y);
 
@@ -23,7 +23,16 @@ int main(){
             if(event.type == sf:: Event :: Closed)
             window.close();
          }
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+          pacman.x-=pacman.speed;//speed will control how much co-ordinates they will move fast or slower.
+          if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+          pacman.x+=pacman.speed;
+          if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+          pacman.y-=pacman.speed;
+          if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+          pacman.y+=pacman.speed;
          window.clear(sf::Color::Black);
+         pacman.shape.setPosition(pacman.x,pacman.y);
          window.draw(pacman.shape);
          window.display();
     }
